@@ -1,6 +1,14 @@
 ## the src folder
 src
 .babelrc
+example
+build.json
+rollup.config.json
+tsconfig.json
+tsconfig.types.json
+types
+dist
+es
 ## node modules folder
 node_modules
 ## incase you have a git repositiory initiated
