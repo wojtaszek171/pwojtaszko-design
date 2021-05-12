@@ -1,0 +1,24 @@
+.pwd-login-component {
+    margin: 0 auto;
+    width: 300px;
+    max-width: 350px;
+
+    .pwd-login-form {
+        max-width: 500px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        .pwd-button-component {
+            display: grid;
+        }
+
+        .pwd-login-error {
+            color: #fc6;
+        }
+    }
+}

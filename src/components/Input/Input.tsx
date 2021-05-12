@@ -6,7 +6,7 @@ interface InputProps {
   label: string;
   value?: any;
   type?: string;
-  autocomplete?: string;
+  autocomplete?: 'on' | 'off';
   placeholder?: string;
   onChange?: Function;
 }
@@ -26,7 +26,7 @@ const Input: FC<InputProps> = ({ disabled, onChange, value = '', label, placehol
   }
 
   return (
-    <div className="text-input">
+    <div className="pwd-text-input">
       {label && <label>{label}</label>}
       <input
         disabled={disabled}

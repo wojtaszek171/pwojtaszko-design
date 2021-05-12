@@ -24,7 +24,13 @@ const Modal: FC<ModalProps> = ({ show, title, onClose, children }) => {
   };
 
   const handleClickEscape = (event: KeyboardEvent) => {
-    if (event.keyCode === 27) { 
+    if (event.key === 'Escape') { 
+      handleClose();
+    }
+  };
+
+  const handleCloseKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') { 
       handleClose();
     }
   };
@@ -42,16 +48,26 @@ const Modal: FC<ModalProps> = ({ show, title, onClose, children }) => {
 
   return (
     show && <>
-      <div className='modal-background'/>
-      <div className='modal-component' ref={ref}>
-        <div className='title-box'>
+      <div className='pwd-modal-background'/>
+      <div className='pwd-modal-component' ref={ref}>
+        <div className='pwd-title-box'>
           <span>{title}</span>
         </div>
-        {onClose && <span className='close-button noselect' onClick={handleClose}>x</span>}
-        <div className='content-box'>
+        {onClose && (
+          <span
+            className='pwd-close-button noselect'
+            onClick={handleClose}
+            role='button'
+            tabIndex={0}
+            onKeyDown={handleCloseKeyDown}
+          >
+            x
+          </span>
+        )}
+        <div className='pwd-content-box'>
           {children}
         </div>
-        <div className='footer-box'></div>
+        <div className='pwd-footer-box'></div>
       </div>
     </>
   );

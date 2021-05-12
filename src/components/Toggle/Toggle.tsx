@@ -22,12 +22,12 @@ const Toggle: FC<ToggleProps> = ({ round = true, onClick, checked = false, label
   }, [checked])
 
   return (
-    <div className="toggle">
-      <label className="toggle-content">
-        <span className="label noselect">{label}</span>
-        <div className="switch">
+    <div className="pwd-toggle-component">
+      <label className="pwd-toggle-content">
+        <span className="pwd-label">{label}</span>
+        <div className="pwd-switch">
           <input type="checkbox" onChange={handleOnClick} checked={isChecked}/>
-          <span className={`slider ${round && 'round'}`}></span>
+          <span className={`pwd-slider ${round && 'pwd-round'}`}></span>
         </div>
       </label>
     </div>

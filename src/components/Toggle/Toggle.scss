@@ -1,9 +1,9 @@
-.toggle {
+.pwd-toggle-component {
 
-    .toggle-content {
+    .pwd-toggle-content {
         display: flex;
 
-        .switch {
+        .pwd-switch {
             position: relative;
             display: inline-block;
             width: 60px;
@@ -12,13 +12,13 @@
             margin-right: 10px;
         }
 
-        .switch input {
+        .pwd-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
 
-        .slider {
+        .pwd-slider {
             position: absolute;
             cursor: pointer;
             top: 0;
@@ -41,7 +41,7 @@
                 transition: .4s;
             }
 
-            &.round {
+            &.pwd-round {
                 border-radius: 34px;
 
                 &:before {
@@ -50,21 +50,21 @@
             }
         }
 
-        input:checked + .slider {
+        input:checked + .pwd-slider {
             background-color: #2196F3;
         }
 
-        input:focus + .slider {
+        input:focus + .pwd-slider {
             box-shadow: 0 0 1px #2196F3;
         }
 
-        input:checked + .slider:before {
+        input:checked + .pwd-slider:before {
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
             transform: translateX(26px);
         }
 
-        .label {
+        .pwd-label {
             display: flex; 
             align-items: center; 
             justify-content: center; 
