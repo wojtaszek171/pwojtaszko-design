@@ -14,3 +14,4 @@ Available components:
 - Button
 - Login
 - Header
+- Footer
