@@ -68,5 +68,10 @@
     "tsc": "^2.0.3",
     "typescript": "^3.7.2",
     "webpack": "4.44.2"
+  },
+  "dependencies": {
+    "i": "^0.3.6",
+    "npm": "^7.21.1",
+    "react-easy-crop": "^3.5.2"
   }
 }
