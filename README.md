@@ -15,3 +15,4 @@ Available components:
 - Login
 - Header
 - Footer
+- ImageUpload

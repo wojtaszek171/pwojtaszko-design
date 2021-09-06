@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, MouseEvent, useState } from 'react';
 import Cropper from 'react-easy-crop'
 import { Modal } from '../Modal';
 import { getCroppedImg } from './getCroppedImage';
@@ -6,9 +6,15 @@ import './ImageUpload.scss';
 
 interface ImageUploadProps {
   aspect?: number;
-  onChange?: Function;
+  onChange?: (uri: Blob) => void;
   round?: boolean;
   edit?: boolean;
+}
+
+enum DragStates {
+  none='none',
+  drag='drag',
+  enter='enter'
 }
 
 const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit }) => {
@@ -18,6 +24,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [croppedAreaPixelsState, setCroppedAreaPixelsState] = useState({ x: 0, y: 0, width: 0, height: 0 });
   const [zoom, setZoom] = useState(1);
+  const [dragState, setDragState] = useState(DragStates.none);
 
   const fileToDataUri = (file: any) => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -31,6 +38,10 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
   const handleOnChange = (e: any) => {    
     const file = e.target.files[0] || null;
 
+    handleFile(file);
+  };
+
+  const handleFile = (file: any) => {
     if(!file) {
       setImage('');
       return;
@@ -39,10 +50,10 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
     fileToDataUri(file)
       .then((dataUri: any) => {
         setImage(dataUri);
+
+        onChange && onChange(dataUri);
       });
-  
-    onChange && onChange();
-  };
+  }
 
   const onCropComplete = (croppedArea: any, croppedAreaPixels: any) => {
     setCroppedAreaPixelsState(croppedAreaPixels);
@@ -52,9 +63,41 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
     getCroppedImg(image, croppedAreaPixelsState).then((res: any) => setCroppedImage(res));
     setCropperVisible(false);
   };
+
+  const dragOver = (e: MouseEvent) => {
+    setDragState(DragStates.enter);
+    e.preventDefault();
+  }
+
+  const dragEnter = (e: MouseEvent) => {
+    e.preventDefault();
+  }
+
+  const dragLeave = (e: MouseEvent) => {
+    setDragState(DragStates.none);
+    e.preventDefault();
+  }
+
+  const fileDrop = (e: any) => {
+    e.preventDefault();
+    setDragState(DragStates.none);
+    const files = e.dataTransfer.files;
+    if (files.length) {
+      handleFile(files[0]);
+    }
+
+  }
+
+  console.log(dragState);
   
   return (
-    <div className={`pwd-image-upload-component${round ? ' pwd-round' : ''}`}>
+    <div
+      onDragOver={dragOver}
+      onDragEnter={dragEnter}
+      onDragLeave={dragLeave}
+      onDrop={fileDrop}
+      className={`pwd-image-upload-component ${round ? ' pwd-round' : ''}`}
+    >
       {!!(image.length) &&
         <>
           <img src={croppedImage || image}/>
@@ -92,9 +135,14 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
           />
           <div className='image-buttons'>
             <div className='input-button'>
-              <span>
-                +
-              </span>
+              {dragState === DragStates.none && 
+                <span>
+                  +
+                </span>}
+              {dragState === DragStates.enter &&
+                <span className='bounce'>
+                  v
+                </span>}
             </div>
           </div>
         </>

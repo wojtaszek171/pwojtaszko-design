@@ -85,4 +85,17 @@
             }
         }
     }
+
+    .bounce {
+        position: relative;
+        top: 10px;
+        display: inline-block;
+        animation: bounce 0.3s ease infinite alternate;
+    }
+
+    @keyframes bounce{
+        100%{
+          top: -10px;
+        }
+      }
 }
