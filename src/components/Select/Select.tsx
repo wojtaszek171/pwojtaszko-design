@@ -26,7 +26,10 @@ const Select: FC<SelectProps> = ({ onChange, options, maxHeight }) => {
 
   return (
     <div className={'pwd-select noselect' + (expanded ? ' pwd-expanded' : '')}>
-      <div className="pwd-dropbtn" onClick={() => setExpanded(!expanded)}>{options.find(({key}) => key === selectedValue)?.item}
+      <div className="pwd-dropbtn" onClick={() => setExpanded(!expanded)}>
+        <div className='pwd-dropbtn-item'>
+          {options.find(({key}) => key === selectedValue)?.item}
+        </div>
         <div className="pwd-dropdown-content" style={{ maxHeight }}>
           {options.map(({ item, key }) => <a href="#" key={key} onClick={() => handleOptionSelect(key)}>{item}</a>)}
         </div>
