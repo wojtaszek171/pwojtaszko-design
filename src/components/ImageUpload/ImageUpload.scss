@@ -1,10 +1,14 @@
 .pwd-image-upload-component {
-    width: 100%;
-    height: 100%;
     display: flex;
     position: relative;
     border: 2px dashed #cccccc;
     overflow: hidden;
+    flex: 1;
+    height: 100%;
+
+    img {
+        pointer-events: none;
+    }
 
     &.pwd-round {
         border-radius: 50%;
@@ -29,6 +33,7 @@
         .input-button {
             display: flex;
             align-items: center;
+            text-align: center;
             margin: 0 auto;
             cursor: pointer;
 

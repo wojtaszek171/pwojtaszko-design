@@ -1,6 +1,6 @@
 {
   "name": "pwojtaszko-design",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "description": "Reusable components for apps",
   "main": "lib/index.js",
   "module": "es/index.js",
