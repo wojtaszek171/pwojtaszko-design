@@ -8,10 +8,8 @@ export interface CheckboxProps {
 }
 
 const Checkbox: FC<CheckboxProps> = ({ checked = false, checkShape, onChange }) => {
-  const [isChecked, setIsChecked] = useState(checked);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
     onChange(e.target.checked)
   }
 
@@ -20,7 +18,7 @@ const Checkbox: FC<CheckboxProps> = ({ checked = false, checkShape, onChange }) 
       <input
         type='checkbox'
         onChange={handleChange}
-        checked={isChecked}
+        checked={checked}
       />
     </div>
   );
