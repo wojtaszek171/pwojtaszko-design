@@ -4,13 +4,15 @@ import './Checkbox.scss';
 export interface CheckboxProps {
   checked?: boolean;
   checkShape?: boolean;
-  onChange: (checked: boolean) => void;
+  onChange?: (checked: boolean) => void;
 }
 
 const Checkbox: FC<CheckboxProps> = ({ checked = false, checkShape, onChange }) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.checked)
+    if (onChange) {
+      onChange(e.target.checked)
+    }
   }
 
   return (

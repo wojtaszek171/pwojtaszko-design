@@ -16,3 +16,5 @@ Available components:
 - Header
 - Footer
 - ImageUpload
+- Checkbox
+- Select
