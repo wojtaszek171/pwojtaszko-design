@@ -13,6 +13,7 @@ Available components:
 - Toggle
 - Button
 - Login
+- Register
 - Header
 - Footer
 - ImageUpload

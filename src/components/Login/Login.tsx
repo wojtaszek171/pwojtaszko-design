@@ -12,32 +12,24 @@ const Login: FC<LoginProps> = ({ message, onLogin }) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLoginChange = (value: string) => {
-        setLogin(value)
-    };
-
-    const handlePasswordChange = (value: string) => {
-        setPassword(value)
-    };
-
     return (
         <div className="pwd-login-component">
             <div className="pwd-login-form">
                 <Input
-                    label='username'
+                    label='Username'
                     value={login}
                     autocomplete='off'
-                    onChange={handleLoginChange}
+                    onChange={setLogin}
                 />
                 <Input
-                    label='password'
+                    label='Password'
                     placeholder='******'
                     type='password'
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={setPassword}
                 />
                 <Button
-                    text='login'
+                    text='Login'
                     handleClick={() => onLogin(login, password)}
                 />
                 {message && (
