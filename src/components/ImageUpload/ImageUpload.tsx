@@ -1,10 +1,11 @@
-import React, { FC, MouseEvent, useState } from 'react';
+import React, { FC, MouseEvent, useEffect, useState } from 'react';
 import Cropper from 'react-easy-crop'
 import { Modal } from '../Modal';
 import { getCroppedImg } from './getCroppedImage';
 import './ImageUpload.scss';
 
 interface ImageUploadProps {
+  photo?: string;
   aspect?: number;
   onChange?: (uri: Blob) => void;
   round?: boolean;
@@ -17,14 +18,18 @@ enum DragStates {
   enter='enter'
 }
 
-const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit }) => {
-  const [image, setImage] = useState('');
+const ImageUpload: FC<ImageUploadProps> = ({ photo, aspect = 1/1, round, onChange, edit }) => {
+  const [image, setImage] = useState(photo);
   const [croppedImage, setCroppedImage] = useState('');
   const [cropperVisible, setCropperVisible] = useState(false);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [croppedAreaPixelsState, setCroppedAreaPixelsState] = useState({ x: 0, y: 0, width: 0, height: 0 });
   const [zoom, setZoom] = useState(1);
   const [dragState, setDragState] = useState(DragStates.none);
+
+  useEffect(() => {
+    setImage(photo);
+  }, [photo]);
 
   const fileToDataUri = (file: any) => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -42,8 +47,8 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
   };
 
   const handleFile = (file: any) => {
-    if(!file) {
-      setImage('');
+    if(!file) {      
+      setImage(photo || '');
       return;
     }
 
@@ -88,7 +93,10 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
 
   }
 
-  console.log(dragState);
+  console.log(photo);
+  console.log(image);
+  
+  
   
   return (
     <div
@@ -98,7 +106,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
       onDrop={fileDrop}
       className={`pwd-image-upload-component ${round ? ' pwd-round' : ''}`}
     >
-      {!!(image.length) &&
+      {!!(image?.length) &&
         <>
           <img src={croppedImage || image}/>
           <div className='image-buttons'>
@@ -126,7 +134,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ aspect = 1/1, round, onChange, edit
           </div>
         </>
       }
-      {!image.length &&
+      {!image?.length &&
         <>
           <input
             type='file'
