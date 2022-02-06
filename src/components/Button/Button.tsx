@@ -1,23 +1,23 @@
-import React, { FC } from 'react';
+import React, { FC, KeyboardEvent, MouseEvent } from 'react';
 import './Button.scss';
 
 interface ButtonProps {
     text: string;
-    handleClick: Function;
+    onClick: Function;
     disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ text, handleClick, disabled = false }) => {
+const Button: FC<ButtonProps> = ({ text, onClick, disabled = false }) => {
 
-    const handleOnClick = () => {
-        if (handleClick) {
-            handleClick();
+    const handleOnClick = (e: MouseEvent | KeyboardEvent) => {
+        if (onClick) {
+            onClick(e);
         }
     }
 
-    const handleKeyDown = (event: React.KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Enter') { 
-            handleOnClick();
+            handleOnClick(event);
         }
     };
 

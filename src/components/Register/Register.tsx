@@ -56,7 +56,7 @@ const Register: FC<RegisterProps> = ({ message, onRegister }) => {
                 />
                 <Button
                     text='Register'
-                    handleClick={handleRegister}
+                    onClick={handleRegister}
                 />
                 {message && (
                     <span className="pwd-register-error">

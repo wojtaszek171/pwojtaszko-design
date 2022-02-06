@@ -30,7 +30,7 @@ const Login: FC<LoginProps> = ({ message, onLogin }) => {
                 />
                 <Button
                     text='Login'
-                    handleClick={() => onLogin(login, password)}
+                    onClick={() => onLogin(login, password)}
                 />
                 {message && (
                     <span className="pwd-login-error">

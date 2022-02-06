@@ -1,6 +1,6 @@
 {
   "name": "pwojtaszko-design",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "description": "Reusable components for apps",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -73,5 +73,9 @@
     "i": "^0.3.6",
     "npm": "^7.21.1",
     "react-easy-crop": "^3.5.2"
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }
