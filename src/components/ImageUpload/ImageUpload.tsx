@@ -93,11 +93,6 @@ const ImageUpload: FC<ImageUploadProps> = ({ photo, aspect = 1/1, round, onChang
 
   }
 
-  console.log(photo);
-  console.log(image);
-  
-  
-  
   return (
     <div
       onDragOver={dragOver}
