@@ -1,6 +1,7 @@
 import './common.scss';
 
 export * from './components/Modal';
+export * from './components/PortalModal';
 export * from './components/Toggle';
 export * from './components/Input';
 export * from './components/Checkbox';
