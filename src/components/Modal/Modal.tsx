@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef } from 'react';
 import './Modal.scss';
 
 export interface ModalProps {
-  show: Boolean;
+  show: boolean;
   title?: string;
   onClose?: Function;
   children: React.ReactElement;
@@ -47,7 +47,7 @@ const Modal: FC<ModalProps> = ({ show, title, onClose, children }) => {
   });
 
   return (
-    show && <>
+    show ? <>
       <div className='pwd-modal-background'/>
       <div className='pwd-modal-component' ref={ref}>
         <div className='pwd-title-box'>
@@ -70,6 +70,7 @@ const Modal: FC<ModalProps> = ({ show, title, onClose, children }) => {
         <div className='pwd-footer-box'></div>
       </div>
     </>
+    : <></>
   );
 }
 

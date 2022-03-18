@@ -27,6 +27,7 @@ const fileExtension = [
 const ignoreGlobs = [
   '**/*.test.{js,jsx,ts,tsx}',
   '**/*.story.{js,jsx,ts,tsx}',
+  '**/*.stories.{js,jsx,ts,tsx}'
 ].join(',');
 
 try {

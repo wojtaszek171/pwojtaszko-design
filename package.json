@@ -1,6 +1,6 @@
 {
   "name": "pwojtaszko-design",
-  "version": "0.3.23",
+  "version": "0.3.26",
   "description": "Reusable components for apps",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -13,13 +13,14 @@
     "dist",
     "lib",
     "es",
-    "src",
     "types"
   ],
   "scripts": {
     "start": "webpack serve --config example/webpack.config.js",
     "build": "npm run clean && node build.js",
-    "clean": "rimraf lib es dist types"
+    "clean": "rimraf lib es dist types",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "Paweł Wojtaszko, wojtaszkopawel@gmail.com",
@@ -39,7 +40,13 @@
     "@babel/preset-typescript": "^7.13.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
-    "@storybook/react": "^6.2.9",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
     "autoprefixer": "^9.8.6",
@@ -67,7 +74,7 @@
     "sass-loader": "^10.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2",
     "tsc": "^2.0.3",
-    "typescript": "^3.7.2",
+    "typescript": "^3.9.10",
     "webpack": "4.44.2",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^3.11.3",
@@ -77,10 +84,19 @@
   "dependencies": {
     "i": "^0.3.6",
     "npm": "^7.21.1",
+    "react": "17.x",
+    "react-dom": "17.x",
     "react-easy-crop": "^3.5.2"
   },
   "directories": {
-    "example": "example",
-    "lib": "lib"
-  }
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wojtaszek171/pwojtaszko-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wojtaszek171/pwojtaszko-design/issues"
+  },
+  "homepage": "https://github.com/wojtaszek171/pwojtaszko-design#readme"
 }

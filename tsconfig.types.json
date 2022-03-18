@@ -14,7 +14,8 @@
     ],
     "exclude": [
       "**/*.test.{ts,tsx}",
-      "**/*.story.{ts,tsx}"
+      "**/*.story.{ts,tsx}",
+      "**/*.stories.{ts,tsx,mdx}"
     ]
   }
   

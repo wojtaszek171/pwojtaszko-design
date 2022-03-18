@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef } from 'react';
 import ReactPortal from '../Portal/Portal';
 import './PortalModal.scss';
 
-export interface ModalProps {
+export interface PortalModalProps {
   show: Boolean;
   title?: string;
   wrapperId?: string; 
@@ -10,7 +10,7 @@ export interface ModalProps {
   children: React.ReactElement;
 }
 
-const Modal: FC<ModalProps> = ({ show, title, onClose, children, wrapperId }) => {
+const PortalModal: FC<PortalModalProps> = ({ show, title, onClose, children, wrapperId }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
@@ -78,4 +78,4 @@ const Modal: FC<ModalProps> = ({ show, title, onClose, children, wrapperId }) =>
   );
 }
 
-export default Modal;
+export default PortalModal;
