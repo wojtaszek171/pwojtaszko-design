@@ -49,32 +49,33 @@ const PortalModal: FC<PortalModalProps> = ({ show, title, onClose, children, wra
   });
 
   return (
-    show &&
-    <ReactPortal wrapperId={wrapperId}>
-      <>
-        <div className='pwd-modal-background'/>
-        <div className='pwd-modal-component' ref={ref}>
-          <div className='pwd-title-box'>
-            <span>{title}</span>
+    show
+      ? <ReactPortal wrapperId={wrapperId}>
+        <>
+          <div className='pwd-modal-background'/>
+          <div className='pwd-modal-component' ref={ref}>
+            <div className='pwd-title-box'>
+              <span>{title}</span>
+            </div>
+            {onClose && (
+              <span
+                className='pwd-close-button noselect'
+                onClick={handleClose}
+                role='button'
+                tabIndex={0}
+                onKeyDown={handleCloseKeyDown}
+              >
+                x
+              </span>
+            )}
+            <div className='pwd-content-box'>
+              {children}
+            </div>
+            <div className='pwd-footer-box'></div>
           </div>
-          {onClose && (
-            <span
-              className='pwd-close-button noselect'
-              onClick={handleClose}
-              role='button'
-              tabIndex={0}
-              onKeyDown={handleCloseKeyDown}
-            >
-              x
-            </span>
-          )}
-          <div className='pwd-content-box'>
-            {children}
-          </div>
-          <div className='pwd-footer-box'></div>
-        </div>
-      </>
-    </ReactPortal>
+        </>
+      </ReactPortal>
+    : <></>
   );
 }
 
