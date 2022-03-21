@@ -3,7 +3,7 @@ import ReactPortal from '../Portal/Portal';
 import './PortalModal.scss';
 
 export interface PortalModalProps {
-  show: Boolean;
+  show: boolean;
   title?: string;
   wrapperId?: string; 
   onClose?: Function;
